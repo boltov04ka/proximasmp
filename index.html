@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ProximaSMP</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+  <div class="layout">
+    <div class="left-col">
+      <div class="avatar-wrap">
+        <img src="assets/ава.png" alt="ProximaSMP">
+      </div>
+      <button class="ip-card interactive" id="copyIp" type="button">
+        <img src="assets/айпи.png" alt="IP ProximaSMP">
+        <span class="comment">Нажми, чтобы скопировать IP</span>
+      </button>
+    </div>
+
+    <a class="tile shop interactive" href="shop.html">
+      <img src="assets/магазин.png" alt="Магазин ProximaSMP">
+      <span class="comment">Открыть магазин</span>
+    </a>
+
+    <a class="tile discord interactive" href="https://discord.gg/3hXqDZ5uQR" target="_blank" rel="noopener">
+      <img src="assets/дискорд.png" alt="Discord ProximaSMP">
+      <span class="comment">Присоединиться к Discord</span>
+    </a>
+
+    <a class="tile how interactive" href="https://www.youtube.com/@proximamc" target="_blank" rel="noopener">
+      <img src="assets/как играть.png" alt="Как играть на ProximaSMP">
+      <span class="comment">Посмотреть, как играть</span>
+    </a>
+  </div>
+  <footer>proximasmp.su</footer>
+</main>
+<script>
+const btn=document.getElementById('copyIp');
+btn.addEventListener('click',async()=>{
+  const ip='proximasmp.su';
+  try{await navigator.clipboard.writeText(ip)}catch(e){
+    const t=document.createElement('textarea');t.value=ip;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();
+  }
+  btn.classList.add('copied');
+  setTimeout(()=>btn.classList.remove('copied'),1600);
+});
+</script>
+</body></html>

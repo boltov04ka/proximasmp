@@ -1,0 +1,50 @@
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#101010;color:#fff;font-family:Arial,Helvetica,sans-serif}
+body{overflow-x:hidden}
+.page{width:995px;max-width:calc(100% - 24px);margin:86px auto 0}
+.layout{display:grid;grid-template-columns:265px 488px 200px;grid-template-rows:275px 275px;column-gap:22px;row-gap:22px;align-items:start;overflow:visible}
+.left-col{grid-column:1;grid-row:1 / span 2;width:265px;display:flex;flex-direction:column;gap:11px;overflow:visible}
+.avatar-wrap{width:265px;height:210px;overflow:hidden;border-radius:22px}
+.avatar-wrap img{width:100%;height:100%;display:block;object-fit:cover}
+.ip-card{width:265px;height:54px;padding:0;border:0;background:none;display:block;position:relative;overflow:visible;cursor:pointer;border-radius:27px}
+.ip-card img{width:100%;height:100%;display:block;object-fit:fill;border-radius:27px;transition:transform .32s cubic-bezier(.2,.75,.25,1),filter .32s ease}
+.tile{position:relative;width:100%;height:275px;display:block;border-radius:22px;overflow:visible;text-decoration:none;color:#fff;cursor:pointer}
+.tile img{width:100%;height:100%;display:block;object-fit:cover;border-radius:22px;transition:transform .38s cubic-bezier(.2,.75,.25,1),filter .38s ease;transform-origin:center}
+.shop{grid-column:2;grid-row:1}
+.discord{grid-column:3;grid-row:1}
+.how{grid-column:2;grid-row:2}
+
+/* картинка не становится выше/шире своей карточки */
+.interactive:hover img{transform:translateY(-7px) scale(1.025);filter:brightness(.76)}
+.interactive:active img{transform:translateY(-3px) scale(1.012)}
+
+/* комментарий физически находится НАД карточкой */
+.comment{position:absolute;left:50%;bottom:calc(100% + 10px);z-index:50;transform:translate(-50%,8px);opacity:0;visibility:hidden;pointer-events:none;white-space:nowrap;padding:9px 14px;border-radius:10px;background:#202020;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 24px rgba(0,0,0,.45);font-size:14px;font-weight:700;line-height:1.2;transition:opacity .22s ease,transform .22s ease,visibility .22s ease}
+.interactive:hover .comment{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.copied .comment{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.copied .comment:after{content:' ✓'}
+.copied .comment{font-size:0}
+.copied .comment:before{content:'IP скопирован';font-size:14px}
+
+footer{text-align:center;margin-top:225px;padding-bottom:18px;font-size:22px;font-weight:800;color:#fff}
+.shop-page{width:min(995px,calc(100% - 24px));margin:0 auto;padding:28px 0}.shop-page a{color:#fff;text-decoration:none;font-weight:700}.shop-page section{text-align:center;margin-top:22vh}.shop-page h1{font-size:36px}.shop-page p{color:#888}
+
+@media(max-width:1020px){
+ .page{width:calc(100% - 24px)}
+ .layout{grid-template-columns:minmax(220px,265px) minmax(0,1fr) minmax(170px,200px)}
+ .left-col{width:100%}.avatar-wrap,.ip-card{width:100%}
+}
+@media(max-width:760px){
+ .page{margin-top:70px}
+ .layout{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:18px}
+ .left-col{grid-column:1;grid-row:1 / span 2}
+ .shop{grid-column:2;grid-row:1;height:260px}.discord{grid-column:2;grid-row:2;height:260px}.how{grid-column:1 / span 2;grid-row:3;height:300px}
+ footer{margin-top:100px}
+}
+@media(max-width:540px){
+ .page{margin-top:60px}
+ .layout{display:flex;flex-direction:column;gap:18px}
+ .left-col,.tile{width:100%}.avatar-wrap{height:auto;aspect-ratio:293/229}.ip-card{height:auto;aspect-ratio:295/60}.tile{height:auto;aspect-ratio:488/275}.discord{aspect-ratio:200/275}
+ footer{margin-top:70px}
+ .comment{font-size:12px;max-width:90%;white-space:normal;text-align:center}
+}
